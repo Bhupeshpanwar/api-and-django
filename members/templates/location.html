@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Enter your location to find the weather</h1>
+    <form method="get" action="">
+        <label for="location">Location:</label><br>
+        <input type="text" id="location" name="location" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if weather_data %}
+        <h2>Weather in {{ weather_data.location }}</h2>
+        <p>Temperature: {{ weather_data.temperature }}°C</p>
+        <p>Description: {{ weather_data.description }}</p>
+        <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" alt="Weather Icon">
+    {% elif error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
